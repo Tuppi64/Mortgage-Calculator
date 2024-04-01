@@ -1,0 +1,83 @@
+#include <iostream>
+#include <iomanip>
+#include <conio.h>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	float interes, meses, mensualidad,count;
+	string reset;
+	double pres;
+	char menu;
+	
+	cout<<"Este programa es para calcular la mensualidad \nde un prestamo.\n" <<endl;
+		
+	for(count=1; ; count++)
+	{
+		cout<<"---MENU---"<<endl;
+	 cout<<"Escriba [0] para salir."<<endl;
+	 cout<<"Escriba [1] para calcular la mensualidad de un prestamo."<<endl;
+	 cout<<"Escribe [2] para saber en cuanto cualifica para un prestamo. "<<endl; 
+	 cout<<"Opcion: ";
+	  	cin>>menu;
+	cout<<endl;
+	  		
+					switch(menu)
+				{
+			
+						case'1':
+							cout<<"Escribe la cantidad del prestamo: $"; 
+								cin>>pres;
+							cout<<"Escribe el interes del prestamo: ";
+								cin>>interes; 
+							
+							cout<<"Escribe la cantidad de tiempo en meses: ";
+								cin>>meses;
+								
+								//formula de mensualidad// ->
+						mensualidad = (pres * (interes/100)/12) * (pow(1+(interes/100)/12, meses) / (pow(1+(interes/100)/12, meses) -1));
+						
+								cout.setf(ios::fixed);
+								cout.setf(ios::showpoint);
+								cout.precision(2);
+								
+							cout<<"La mensualidad a pagar es: $"<< mensualidad<< "\n"<<endl;
+						break; 
+				
+						case'2': 
+							cout<<"Escribe la mensualidad a pagar: $";
+								cin>>mensualidad;
+							cout<<"Escribe el interes: ";
+								cin>>interes;
+							cout<<"Entre la cantidad de meses en la cual lo va pagar: "; 
+								cin>>meses;
+								
+							pres= mensualidad*(1-(1/pow(interes/100/12+1,meses)))/(interes/100/12);
+							
+								cout.setf(ios::fixed);
+								cout.setf(ios::showpoint);
+								cout.precision(2);
+								
+							cout<<"El prestamo seria de : $"<<pres<<endl;
+							cout<<endl;
+						break;
+						
+						case '0':
+							cout<<"Seguro que desea salir de el programa? (s/n) :";
+								cin>>reset;
+							cout<<endl;
+						break;
+				
+						default:
+							cout<<"**** Seleccion no aceptada. Favor de ingresar solo 0,1,2 ****"<<endl;
+				}
+								if(reset=="s"|| reset=="S")
+								{
+									break;
+								}
+	}
+	return 0;
+}
